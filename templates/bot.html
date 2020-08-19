@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <link rel="stylesheet" href="https://unpkg.com/botui/build/botui.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/botui/build/botui-theme-default.css" />
+    
+    <div id="my-bot">
+        <bot-ui></bot-ui>
+    </div>
+    <script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
+    <script src="https://unpkg.com/botui/build/botui.min.js"></script>
+    <script>
+        var botui = new BotUI('my-bot');
+        var serverUrl = 'https://' + document.domain + '/' + 'liveAlerts'
+        //console.log(server_url);
+        botui.message.add({
+            content: 'AAAAAAAAAAAAAAAAAAAAA!'
+        }).then(function () { // wait till previous message has been shown.
+
+            botui.message.add({
+                delay: 1000,
+                human: true,
+                content: 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!'
+            });
+        });
+    </script>
+{% endblock %}
